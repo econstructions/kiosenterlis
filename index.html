@@ -133,38 +133,39 @@
     </nav>
 
     <!-- INTRO BANNER (Story Banner Style) -->
-    <header class="relative bg-wood-900 text-white w-full aspect-[16/9] flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('images/hero-kitchen.png');"></div>
+    <header class="relative bg-wood-900 text-white w-full min-h-[auto] md:aspect-[16/9] flex items-center justify-center overflow-hidden py-12 md:py-0">
     
+    <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('images/hero-kitchen.jpg');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-wood-900 via-wood-900/40 to-wood-900/70"></div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <span class="inline-block bg-copper/30 text-copper border border-copper/50 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-4">
+            ΧΕΙΡΟΠΟΙΗΤΕΣ ΚΑΤΑΣΚΕΥΕΣ ΑΠΟ ΤΟ 1995
+        </span>
         
+        <h1 class="font-serif text-2xl sm:text-4xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4">
+            Εκεί που η φύση συναντά την τέχνη του ξύλου.
+        </h1>
         
+        <p class="text-sm sm:text-base lg:text-xl text-wood-200 font-light max-w-2xl mx-auto mb-6 px-2">
+            Σχεδιάζουμε, κατασκευάζουμε και τοποθετούμε μοναδικά έπιπλα για το σπίτι και τον επαγγελματικό σας χώρο, με έμφαση στη λεπτομέρεια και την αντοχή στον χρόνο.
+        </p>
         
-        
-        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <span class="inline-block bg-copper/30 text-copper border border-copper/50 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-                <!-- EDIT: ΥΠΟΤΙΤΛΟΣ -->
-                ΧΕΙΡΟΠΟΙΗΤΕΣ ΚΑΤΑΣΚΕΥΕΣ ΑΠΟ ΤΟ 2018
-            </span>
-            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
-                Εκεί που η φύση συναντά την τέχνη του ξύλου.
-            </h1>
-            <p class="text-lg sm:text-xl text-wood-200 font-light max-w-2xl mx-auto mb-10">
-                Σχεδιάζουμε, κατασκευάζουμε και τοποθετούμε μοναδικά έπιπλα για το σπίτι και τον επαγγελματικό σας χώρο, με έμφαση στη λεπτομέρεια και την αντοχή στον χρόνο.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#services" class="bg-copper hover:bg-amber-700 text-white font-semibold px-8 py-4 rounded shadow-lg transition duration-300 transform hover:-translate-y-0.5">
-                    Οι Υπηρεσίες μας
-                </a>
-                <a href="#contact" class="bg-transparent hover:bg-white/10 text-white border-2 border-white/80 font-semibold px-8 py-4 rounded transition duration-300">
-                    Ζητήστε Προσφορά
-                </a>
-            </div>
-        </div>
-        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#services" class="text-wood-300 hover:text-white transition-colors">
-                <i class="fa-solid fa-chevron-down text-2xl"></i>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <a href="#services" class="w-full sm:w-auto bg-copper hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded shadow-lg transition duration-300 text-sm">
+                Οι Υπηρεσίες μας
+            </a>
+            <a href="#contact" class="w-full sm:w-auto bg-transparent hover:bg-white/10 text-white border-2 border-white/80 font-semibold px-6 py-3 rounded transition duration-300 text-sm">
+                Ζητήστε Προσφορά
             </a>
         </div>
+    </div>
+    
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
+        <a href="#services" class="text-wood-300 hover:text-white transition-colors">
+            <i class="fa-solid fa-chevron-down text-xl"></i>
+        </a>
+    </div>
     </header>
 
     <!-- SPOTLIGHT 1: SERVICES BANNER INTRO -->
