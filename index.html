@@ -1,0 +1,320 @@
+```html
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Χειροποίητο Έπιπλο | Παραδοσιακή & Μοντέρνα Επιπλοποιία</title>
+    
+    <!-- Google Fonts: Playfair Display για κλασικούς τίτλους & Montserrat για καθαρό κείμενο -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome για πανέμορφα εικονίδια -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wood: {
+                            50: '#FDFBF7',
+                            100: '#F5F2EB',
+                            200: '#E6DEC9',
+                            300: '#C2B28F',
+                            400: '#A48E68',
+                            500: '#8D6E63', // Warm Wood Accent
+                            600: '#5D4037', // Medium Wood
+                            700: '#4E342E', // Mahogany/Dark Oak
+                            800: '#3E2723', // Espresso
+                            900: '#271714', // Very Dark Wood
+                        },
+                        copper: '#B87333',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS προσαρμογές για το ύφος του HTML5 UP Story */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #FDFBF7;
+            color: #271714;
+        }
+
+        /* Hero / Spotlight transition styling */
+        .spotlight-section {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Διακοσμητικά μοτίβα ξύλου (SVG Background) */
+        .wood-pattern-bg {
+            background-color: #FDFBF7;
+            background-image: radial-gradient(#8d6e63 0.5px, transparent 0.5px), radial-gradient(#8d6e63 0.5px, #fdfbf7 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F2EB;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8D6E63;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5D4037;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- NAV BAR -->
+    <nav class="sticky top-0 z-50 bg-wood-900 text-wood-100 shadow-md border-b border-wood-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center gap-2">
+                        <i class="fa-solid fa-compass-drafting text-copper text-3xl"></i>
+                        <span class="font-serif text-lg sm:text-2xl font-bold tracking-wider text-white">
+                            <!-- EDIT: ΕΠΩΝΥΜΙΑ ΕΠΙΧΕΙΡΗΣΗΣ -->
+                            [ΟΝΟΜΑ_ΕΠΙΠΛΟΠΟΙΟΥ / ΞΥΛΟΤΕΧΝΙΚΗ]
+                        </span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#services" class="hover:text-copper transition-colors duration-200 px-3 py-2 text-sm font-medium">Υπηρεσίες</a>
+                        <a href="#wood-explorer" class="hover:text-copper transition-colors duration-200 px-3 py-2 text-sm font-medium">Υλικά</a>
+                        <a href="#estimator" class="hover:text-copper transition-colors duration-200 px-3 py-2 text-sm font-medium">Υπολογισμός Κόστους</a>
+                        <a href="#gallery" class="hover:text-copper transition-colors duration-200 px-3 py-2 text-sm font-medium">Έργα</a>
+                        <a href="#contact" class="bg-copper hover:bg-opacity-90 text-white transition-colors duration-200 px-4 py-2 rounded text-sm font-medium shadow">Επικοινωνία</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-wood-200 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu, toggled by JS -->
+        <div id="mobile-menu" class="hidden md:hidden bg-wood-900 border-t border-wood-800 px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#services" class="block text-wood-100 hover:bg-wood-800 px-3 py-2 rounded-md text-base font-medium">Υπηρεσίες</a>
+            <a href="#wood-explorer" class="block text-wood-100 hover:bg-wood-800 px-3 py-2 rounded-md text-base font-medium">Υλικά</a>
+            <a href="#estimator" class="block text-wood-100 hover:bg-wood-800 px-3 py-2 rounded-md text-base font-medium">Υπολογισμός Κόστους</a>
+            <a href="#gallery" class="block text-wood-100 hover:bg-wood-800 px-3 py-2 rounded-md text-base font-medium">Έργα</a>
+            <a href="#contact" class="block bg-copper text-white px-3 py-2 rounded-md text-base font-medium text-center">Επικοινωνία</a>
+        </div>
+    </nav>
+
+    <!-- INTRO BANNER (Story Banner Style) -->
+    <header class="relative bg-wood-900 text-white min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Overlay Image (Craftsman style) -->
+        <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1920');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-wood-900 via-transparent to-wood-900/60"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <span class="inline-block bg-copper/30 text-copper border border-copper/50 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                <!-- EDIT: ΥΠΟΤΙΤΛΟΣ -->
+                ΧΕΙΡΟΠΟΙΗΤΕΣ ΚΑΤΑΣΚΕΥΕΣ ΑΠΟ ΤΟ 1995
+            </span>
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
+                Εκεί που η φύση συναντά την τέχνη του ξύλου.
+            </h1>
+            <p class="text-lg sm:text-xl text-wood-200 font-light max-w-2xl mx-auto mb-10">
+                Σχεδιάζουμε, κατασκευάζουμε και τοποθετούμε μοναδικά έπιπλα για το σπίτι και τον επαγγελματικό σας χώρο, με έμφαση στη λεπτομέρεια και την αντοχή στον χρόνο.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services" class="bg-copper hover:bg-amber-700 text-white font-semibold px-8 py-4 rounded shadow-lg transition duration-300 transform hover:-translate-y-0.5">
+                    Οι Υπηρεσίες μας
+                </a>
+                <a href="#contact" class="bg-transparent hover:bg-white/10 text-white border-2 border-white/80 font-semibold px-8 py-4 rounded transition duration-300">
+                    Ζητήστε Προσφορά
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#services" class="text-wood-300 hover:text-white transition-colors">
+                <i class="fa-solid fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- SPOTLIGHT 1: SERVICES BANNER INTRO -->
+    <section id="services" class="py-12 bg-wood-100 border-y border-wood-200">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-wood-800 mb-4">Τι κατασκευάζουμε</h2>
+            <p class="text-wood-600 text-base sm:text-lg">
+                Κάθε ξύλινη επιφάνεια έχει τη δική της ιστορία. Εμείς τη μετατρέπουμε σε λειτουργικά έργα τέχνης, κομμένα και ραμμένα στα μέτρα σας.
+            </p>
+        </div>
+    </section>
+
+    <!-- SPOTLIGHT 2: KITCHEN & BATHROOM (Left Image, Right Text) -->
+    <section class="spotlight-section grid grid-cols-1 lg:grid-cols-2">
+        <div class="relative h-96 lg:h-full min-h-[400px]">
+            <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=1200" alt="Έπιπλα Κουζίνας">
+            <div class="absolute inset-0 bg-wood-900/10"></div>
+        </div>
+        <div class="bg-wood-50 p-8 sm:p-16 lg:p-24 flex flex-col justify-center">
+            <div class="max-w-xl">
+                <div class="text-copper font-bold text-sm tracking-widest uppercase mb-2">01. ΧΩΡΟΙ ΔΗΜΙΟΥΡΓΙΑΣ & ΧΑΛΑΡΩΣΗΣ</div>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-wood-800 mb-6">Κουζίνα & Μπάνιο</h3>
+                <p class="text-wood-600 mb-6 leading-relaxed">
+                    Σχεδιάζουμε λειτουργικές κουζίνες με έξυπνους αποθηκευτικούς χώρους και ανθεκτικά έπιπλα μπάνιου με ειδική επεξεργασία για απόλυτη προστασία από την υγρασία. Επιλέγουμε κορυφαία υλικά και μηχανισμούς για καθημερινή, απροβλημάτιστη χρήση.
+                </p>
+                <ul class="space-y-3 text-wood-700 font-medium mb-8">
+                    <li><i class="fa-solid fa-check text-copper mr-2"></i> Μοντέρνες & Κλασικές Κουζίνες</li>
+                    <li><i class="fa-solid fa-check text-copper mr-2"></i> Έπιπλα Μπάνιου από Μασίφ Ξύλο</li>
+                    <li><i class="fa-solid fa-check text-copper mr-2"></i> Ανθυγρά & Αδιάβροχα Υλικά</li>
+                </ul>
+                <a href="#contact" class="inline-flex items-center gap-2 text-wood-800 font-bold hover:text-copper transition-colors">
+                    Μάθετε περισσότερα <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPOTLIGHT 3: BEDROOM & OFFICE (Right Image, Left Text) -->
+    <section class="spotlight-section grid grid-cols-1 lg:grid-cols-2">
+        <div class="bg-wood-100 p-8 sm:p-16 lg:p-24 flex flex-col justify-center lg:order-first order-last">
+            <div class="max-w-xl">
+                <div class="text-copper font-bold text-sm tracking-widest uppercase mb-2">02. ΑΝΕΣΗ & ΠΑΡΑΓΩΓΙΚΟΤΗΤΑ</div>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-wood-800 mb-6">Υπνοδωμάτιο & Γραφείο</h3>
+                <p class="text-wood-600 mb-6 leading-relaxed">
+                    Δημιουργήστε το δικό σας καταφύγιο ηρεμίας με κρεβάτια, κομοδίνα και εντοιχισμένες ντουλάπες που αξιοποιούν κάθε εκατοστό. Για τον επαγγελματικό σας χώρο, κατασκευάζουμε εργονομικά γραφεία και βιβλιοθήκες που εμπνέουν δημιουργικότητα.
+                </p>
+                <ul class="space-y-3 text-wood-700 font-medium mb-8">
+                    <li><i class="fa-solid fa-check text-copper mr-2"></i> Ντουλάπες (Συρόμενες & Ανοιγόμενες)</li>
+                    <li><i class="fa-solid fa-check text-copper mr-2"></i> Κρεβατοκάμαρες & Κεφαλάρια</li>
+                    <li><i class="fa-solid fa-check text-copper mr-2"></i> Γραφεία & Βιβλιοθήκες</li>
+                </ul>
+                <a href="#contact" class="inline-flex items-center gap-2 text-wood-800 font-bold hover:text-copper transition-colors">
+                    Δείτε λύσεις <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="relative h-96 lg:h-full min-h-[400px]">
+            <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1200" alt="Έπιπλα Υπνοδωματίου">
+            <div class="absolute inset-0 bg-wood-900/10"></div>
+        </div>
+    </section>
+
+    <!-- SPOTLIGHT 4: SPECIAL CONSTRUCTIONS & REPAIRS (Left Image, Right Text) -->
+    <section class="spotlight-section grid grid-cols-1 lg:grid-cols-2">
+        <div class="relative h-96 lg:h-full min-h-[400px]">
+            <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1507308209371-1c250064f06a?auto=format&fit=crop&q=80&w=1200" alt="Ξυλουργικές Εργασίες">
+            <div class="absolute inset-0 bg-wood-900/10"></div>
+        </div>
+        <div class="bg-wood-50 p-8 sm:p-16 lg:p-24 flex flex-col justify-center">
+            <div class="max-w-xl">
+                <div class="text-copper font-bold text-sm tracking-widest uppercase mb-2">03. ΕΞΕΙΔΙΚΕΥΜΕΝΗ ΦΡΟΝΤΙΔΑ</div>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-wood-800 mb-6">Ειδικές Κατασκευές & Μερεμέτια</h3>
+                <p class="text-wood-600 mb-6 leading-relaxed">
+                    Έχετε μια μοναδική ιδέα για μια γωνιά του σπιτιού σας; Ή μήπως κάποιο αγαπημένο σας έπιπλο χρειάζεται επιδιόρθωση και φρεσκάρισμα; Αναλαμβάνουμε κάθε είδους ειδική ξυλουργική κατασκευή και μικροεπισκευή (μερεμέτια) με την ίδια προσοχή.
+                </p>
+                <ul class="space-y-3 text-wood-700 font-medium mb-8">
+                    <li><i class="fa-solid fa-check text-copper mr-2"></i> Ειδικές επενδύσεις τζακιού & τοίχου</li>
+                    <li><i class="fa-solid fa-check text-copper mr-2"></i> Συντήρηση & Αναπαλαίωση παλιών επίπλων</li>
+                    <li><i class="fa-solid fa-check text-copper mr-2"></i> Άμεση επιδιόρθωση σε φθαρμένους μεντεσέδες & οδηγούς</li>
+                </ul>
+                <a href="#contact" class="inline-flex items-center gap-2 text-wood-800 font-bold hover:text-copper transition-colors">
+                    Επικοινωνήστε για μερεμέτι <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SECTION 1: WOOD SPECIES EXPLORER -->
+    <section id="wood-explorer" class="py-20 bg-wood-100 wood-pattern-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif text-4xl font-bold text-wood-800 mb-4">Εξερευνήστε τα Υλικά μας</h2>
+                <p class="text-wood-600">
+                    Κάθε ξύλο έχει διαφορετικό χαρακτήρα, αντοχή και εμφάνιση. Επιλέξτε μια κατηγορία για να μάθετε τις ιδιότητες και τις προτεινόμενες χρήσεις της.
+                </p>
+            </div>
+
+            <!-- Interactive App Grid -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-wood-200 grid grid-cols-1 md:grid-cols-12">
+                <!-- Navigation Tabs (Left side on desktop) -->
+                <div class="md:col-span-4 bg-wood-900 text-white p-6 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-serif text-xl font-semibold text-copper mb-6 border-b border-wood-800 pb-3">
+                            <i class="fa-solid fa-tree mr-2"></i>Ποικιλίες Ξύλου
+                        </h4>
+                        <nav class="space-y-2">
+                            <button onclick="selectWood('oak')" id="btn-oak" class="wood-tab-btn active w-full text-left px-4 py-3 rounded transition-all duration-200 font-medium flex items-center justify-between bg-wood-800 text-white border-l-4 border-copper">
+                                <span>Δρυς (Oak)</span>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <button onclick="selectWood('walnut')" id="btn-walnut" class="wood-tab-btn w-full text-left px-4 py-3 rounded transition-all duration-200 font-medium flex items-center justify-between text-wood-300 hover:text-white hover:bg-wood-800/50">
+                                <span>Καρυδιά (Walnut)</span>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <button onclick="selectWood('beech')" id="btn-beech" class="wood-tab-btn w-full text-left px-4 py-3 rounded transition-all duration-200 font-medium flex items-center justify-between text-wood-300 hover:text-white hover:bg-wood-800/50">
+                                <span>Οξιά (Beech)</span>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <button onclick="selectWood('pine')" id="btn-pine" class="wood-tab-btn w-full text-left px-4 py-3 rounded transition-all duration-200 font-medium flex items-center justify-between text-wood-300 hover:text-white hover:bg-wood-800/50">
+                                <span>Πεύκο (Pine)</span>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <button onclick="selectWood('mdf')" id="btn-mdf" class="wood-tab-btn w-full text-left px-4 py-3 rounded transition-all duration-200 font-medium flex items-center justify-between text-wood-300 hover:text-white hover:bg-wood-800/50">
+                                <span>MDF / Καπλαμάς</span>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                        </nav>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-wood-800 text-xs text-wood-400">
+                        * Όλα μας τα ξύλα προέρχονται από πιστοποιημένα δάση αειφόρου διαχείρισης.
+                    </div>
+                </div>
+
+                <!-- Content Area (Right side on desktop) -->
+                <div class="md:col-span-8 p-8 sm:p-12 flex flex-col justify-between">
+                    <div id="wood-content">
+                        <!-- Dynamic Content will be inserted by JS -->
+                        <h3 class="font-serif text-3xl font-bold text-wood-800 mb-2" id="wood-title">Δρυς (Oak)</h3>
+                        <p class="text-copper font-semibold mb-6 flex items-center gap-2">
+                            <span id="wood-type" class="bg-copper/10 px-3 py-1 rounded text-xs uppercase">Σκληρό ξύλο</span>
+                            <span>•</span>
+                            <span id="wood-price" class="text-sm">Κατηγορία Τιμής: Υψηλή</span>
+                        </p>
+                        
+                        <!-- Mini Preview Block -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                            <div>
+                                <h5 class="font-bold text-wood-800 mb-2">Χαρακτηριστικά</h5>
+                                <p id="wood-desc" class="text-wood-600 text-sm leading-relaxed">
+                                    Κλασικό, εξαιρετικά ανθεκτικό ξύλο με έντονα και όμορφα νερά. Έχει μεγάλη αντοχή στην υγρασία και τις μηχανικές καταπονήσεις, καθιστώντας το ιδανικό για έπιπλα που θα κρατήσουν μια ζωή.
+                                </p>
+                            </div>
+                            <div class="bg-wood-100 p-4 rounded-lg border border-wood-200">
+                                <h5 class="font-bold text-wood-800 mb-2 text-sm">Προτεινόμενη Χρήση</h
